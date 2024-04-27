@@ -127,7 +127,7 @@ func (p *protocolV2) SendMessage(client *clientV2, msg *Message) error {
 	buf := bufferPoolGet()
 	defer bufferPoolPut(buf)
 
-	msg.deferred = 0
+	msg.deferred = time.Duration(0)
 	_, err := msg.WriteTo(buf)
 	if err != nil {
 		return err
